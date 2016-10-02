@@ -2,8 +2,9 @@
   {{title}}
 </h1>
 
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.desc}}
-  </li>
-</ul>
+<nav>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a routerLink="/items" routerLinkActive="active">Items</a>
+</nav>
+
+<router-outlet></router-outlet>
