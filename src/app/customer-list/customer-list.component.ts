@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { Customer } from '../customer.interface';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'customer-list',
@@ -8,13 +8,25 @@ import { Customer } from '../customer.interface';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-
+  @Input() item: any;
   public myForm: FormGroup;
 
-  constructor(private _fb: FormBuilder) { }
+  customers: FirebaseListObservable<any>;
+
+  constructor(private _fb: FormBuilder, public af: AngularFire) {
+    this.customers = af.database.list('/customers');
+  }
 
   ngOnInit() {
-    this.myForm = this._fb.group({
+    this.myForm = this.initCustomerFormGroup();
+  }
+
+  editCustomer() {
+    console.log(this.item.$key)
+  }
+
+  initCustomerFormGroup() {
+    return this._fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],
       addresses: this._fb.array([
         this.initAddress(),
@@ -40,9 +52,9 @@ export class CustomerListComponent implements OnInit {
   }
 
 
-  save(model: Customer) {
-    // call API to save customer
-    console.log(model);
+  save(customerFormGroup: FormGroup) {
+    this.customers.push(customerFormGroup.value);
+    this.myForm = this.initCustomerFormGroup();
   }
 
 }
