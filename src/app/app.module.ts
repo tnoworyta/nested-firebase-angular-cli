@@ -12,6 +12,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddressComponent } from './address/address.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import { CustomerEditFormComponent } from './customer-edit-form/customer-edit-form.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBulVYHp3MWlg_Mx8OqmKmtQwu7Ao51ZZg",
@@ -33,7 +34,8 @@ export const firebaseAuthConfig = {
     CustomerListComponent,
     AddressComponent,
     CustomerComponent,
-    CustomerEditComponent
+    CustomerEditComponent,
+    CustomerEditFormComponent
   ],
   imports: [
     BrowserModule,

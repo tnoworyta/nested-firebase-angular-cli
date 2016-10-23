@@ -16,10 +16,7 @@ export class CustomerEditComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-    console.log(this.id);
     this.customer = af.database.object('customers/' + this.id);
-    //console.log(this.customer);
-    //console.log(this.customers);
   }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 <p>
-  cew
+  Editing
   {{ (customer | async)?.name }}
 </p>
 
+<customer-edit-form [customer]="(customer | async)" ng-if="(customer | async)"></customer-edit-form>

@@ -1,0 +1,37 @@
+{{customer?.name}}
+<pre>{{customer | json}}</pre>
+
+<div class="container">
+  <h4>Edit customer</h4>
+  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" formControlName="name">
+      <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+        Name is required (minimum 5 characters).
+      </small>
+    </div>
+
+    <div formArrayName="addresses">
+      <div *ngFor="let address of myForm.controls.addresses.controls; let i=index">
+        <div>
+          <span>Address {{i + 1}}</span>
+                <span *ngIf="myForm.controls.addresses.controls.length > 1"
+                      (click)="removeAddress(i)"> [X]
+                </span>
+        </div>
+
+        <div [formGroupName]="i">
+          <address [group]="myForm.controls.addresses.controls[i]"></address>
+        </div>
+
+        <div class="margin-20">
+          <a (click)="addAddress()" style="cursor: default">
+            Add another address +
+          </a>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

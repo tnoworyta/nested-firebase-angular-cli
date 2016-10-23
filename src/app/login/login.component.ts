@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.af.auth.login({ email: this.model.email, password: this.model.password }).then(() => {
-      console.log('authenticated')
       this.model = new User('', '');
       this.router.navigate(['/items'])
     });

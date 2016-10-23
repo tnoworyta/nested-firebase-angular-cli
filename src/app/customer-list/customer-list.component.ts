@@ -22,7 +22,6 @@ export class CustomerListComponent implements OnInit {
   }
 
   editCustomer() {
-    console.log(this.item.$key)
   }
 
   initCustomerFormGroup() {
