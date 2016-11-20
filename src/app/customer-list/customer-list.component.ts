@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
@@ -8,52 +7,13 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  @Input() item: any;
-  public myForm: FormGroup;
-
   customers: FirebaseListObservable<any>;
 
-  constructor(private _fb: FormBuilder, public af: AngularFire) {
+  constructor(public af: AngularFire) {
     this.customers = af.database.list('/customers');
   }
 
   ngOnInit() {
-    this.myForm = this.initCustomerFormGroup();
+
   }
-
-  editCustomer() {
-  }
-
-  initCustomerFormGroup() {
-    return this._fb.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      addresses: this._fb.array([
-        this.initAddress(),
-      ])
-    });
-  }
-
-  initAddress() {
-    return this._fb.group({
-      street: ['', Validators.required],
-      postcode: ['']
-    });
-  }
-
-  addAddress() {
-    const control = <FormArray>this.myForm.controls['addresses'];
-    control.push(this.initAddress());
-  }
-
-  removeAddress(i: number) {
-    const control = <FormArray>this.myForm.controls['addresses'];
-    control.removeAt(i);
-  }
-
-
-  save(customerFormGroup: FormGroup) {
-    this.customers.push(customerFormGroup.value);
-    this.myForm = this.initCustomerFormGroup();
-  }
-
 }
