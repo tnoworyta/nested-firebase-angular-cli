@@ -1,8 +1,4 @@
-{{customer?.name}}
-<pre>{{customer | json}}</pre>
-
 <div class="container">
-  <h4>Edit customer</h4>
   <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
     <div class="form-group">
       <label>Name</label>
@@ -25,12 +21,14 @@
           <address [group]="myForm.controls.addresses.controls[i]"></address>
         </div>
 
-        <div class="margin-20">
-          <a (click)="addAddress()" style="cursor: default">
-            Add another address +
-          </a>
-        </div>
       </div>
+
+      <div class="margin-20">
+        <a (click)="addAddress()" style="cursor: default">
+          Add another address +
+        </a>
+      </div>
+
       <button type="submit" [disabled]="!myForm.valid">Submit</button>
     </div>
   </form>

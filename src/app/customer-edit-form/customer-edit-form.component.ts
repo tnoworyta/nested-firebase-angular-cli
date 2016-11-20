@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'customer-edit-form',
@@ -12,7 +13,7 @@ export class CustomerEditFormComponent implements OnInit, OnChanges {
   customers: FirebaseListObservable<any>;
   public myForm: FormGroup;
 
-  constructor(private _fb: FormBuilder, public af: AngularFire) {
+  constructor(private _fb: FormBuilder, public af: AngularFire, private router: Router) {
     this.customers = af.database.list('customers');
   }
 
@@ -74,5 +75,6 @@ export class CustomerEditFormComponent implements OnInit, OnChanges {
 
   save(customerFormGroup: FormGroup) {
     this.customers.update(this.customer.$key, customerFormGroup.value);
+    this.router.navigate(['/customer-list'])
   }
 }

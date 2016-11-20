@@ -28,14 +28,15 @@
           <address [group]="myForm.controls.addresses.controls[i]"></address>
         </div>
 
-        <div class="margin-20">
-          <a (click)="addAddress()" style="cursor: default">
-            Add another address +
-          </a>
-        </div>
 
-        <button type="submit" [disabled]="!myForm.valid">Submit</button>
       </div>
+      <div class="margin-20">
+        <a (click)="addAddress()" style="cursor: default">
+          Add another address +
+        </a>
+      </div>
+
+      <button type="submit" [disabled]="!myForm.valid">Submit</button>
      </div>
   </form>
 </div>
