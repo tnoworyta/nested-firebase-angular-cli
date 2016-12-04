@@ -36,12 +36,14 @@ export class CustomerNewFormComponent implements OnInit {
     });
   }
 
-  addAddress() {
+  addAddress($event) {
+    $event.preventDefault();
     const control = <FormArray>this.myForm.controls['addresses'];
     control.push(this.initAddress());
   }
 
-  removeAddress(i: number) {
+  removeAddress(i: number, $event) {
+    $event.preventDefault();
     const control = <FormArray>this.myForm.controls['addresses'];
     control.removeAt(i);
   }

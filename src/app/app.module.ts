@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { AngularFireModule, AuthMethods, AuthProviders} from 'angularfire2';
@@ -14,6 +14,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerEditFormComponent } from './customer-edit-form/customer-edit-form.component';
 import { CustomerNewFormComponent } from './customer-new-form/customer-new-form.component';
+import 'hammerjs';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBulVYHp3MWlg_Mx8OqmKmtQwu7Ao51ZZg",
@@ -40,6 +41,7 @@ export const firebaseAuthConfig = {
     CustomerNewFormComponent
   ],
   imports: [
+    MaterialModule.forRoot(),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

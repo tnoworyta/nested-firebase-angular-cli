@@ -1,13 +1,12 @@
 <div [formGroup]="adressForm">
   <div class="form-group col-xs-6">
-    <label>street</label>
-    <input type="text" class="form-control" formControlName="street">
-    <small [hidden]="adressForm.controls.street.valid" class="text-danger">
-      Street is required
-    </small>
+    <md-input placeholder="Street" type="text" maxlength="50" class="form-control" formControlName="street" #addressStreet>
+      <md-hint align="end">{{addressStreet.characterCount}} / 50</md-hint>
+    </md-input>
   </div>
   <div class="form-group col-xs-6">
-    <label>postcode</label>
-    <input type="text" class="form-control" formControlName="postcode">
+    <md-input type="text" maxlength="10" placeholder="Postcode" class="form-control" formControlName="postcode" #addressPostcode>
+      <md-hint align="end">{{addressPostcode.characterCount}} / 50</md-hint>
+    </md-input>
   </div>
 </div>

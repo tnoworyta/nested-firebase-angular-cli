@@ -1,7 +1,7 @@
-<ul>
-  <li class="text" *ngFor="let customer of customers | async">
+<md-list>
+  <md-list-item *ngFor="let customer of customers | async">
     <customer [customer]="customer"></customer>
-  </li>
-</ul>
+  </md-list-item>
+</md-list>
 
 <customer-new-form></customer-new-form>
