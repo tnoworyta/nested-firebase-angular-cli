@@ -1,35 +1,40 @@
 <div class="container">
-  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-    <div class="form-group">
-      <label>Name</label>
-      <input type="text" formControlName="name">
-      <small *ngIf="!myForm.controls.name.valid" class="text-danger">
-        Name is required (minimum 5 characters).
-      </small>
-    </div>
-
-    <div formArrayName="addresses">
-      <div *ngFor="let address of myForm.controls.addresses.controls; let i=index">
-        <div>
-          <span>Address {{i + 1}}</span>
-                <span *ngIf="myForm.controls.addresses.controls.length > 1"
-                      (click)="removeAddress(i)"> [X]
-                </span>
+  <md-card>
+    <md-card-title color="primary">Edit customer</md-card-title>
+    <md-card-content>
+      <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+        <div class="form-group">
+          <md-input type="text" placeholder="Name (5-50 chars)" maxlength="50" formControlName="name" #customerName>
+            <md-hint align="end">{{customerName.characterCount}} / 50</md-hint>
+          </md-input>
         </div>
 
-        <div [formGroupName]="i">
-          <address [group]="myForm.controls.addresses.controls[i]"></address>
+        <div formArrayName="addresses">
+          <div *ngFor="let address of myForm.controls.addresses.controls; let i=index">
+            <div>
+              <span>Address {{i + 1}}</span>
+              <a *ngIf="myForm.controls.addresses.controls.length > 1"
+                 href="#"
+                 (click)="removeAddress(i, $event)">Remove
+              </a>
+            </div>
+
+            <div [formGroupName]="i">
+              <address [group]="myForm.controls.addresses.controls[i]"></address>
+            </div>
+
+
+          </div>
+          <br>
+          <div class="margin-20">
+            <a (click)="addAddress($event)" href="#">
+              Add another address +
+            </a>
+          </div>
+          <br>
+          <button md-raised-button color="primary" type="submit" [disabled]="!myForm.valid">Submit</button>
         </div>
-
-      </div>
-
-      <div class="margin-20">
-        <a (click)="addAddress()" style="cursor: default">
-          Add another address +
-        </a>
-      </div>
-
-      <button md-raised-button type="submit" [disabled]="!myForm.valid">Submit</button>
-    </div>
-  </form>
+      </form>
+    </md-card-content>
+  </md-card>
 </div>

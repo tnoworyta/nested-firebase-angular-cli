@@ -62,12 +62,14 @@ export class CustomerEditFormComponent implements OnInit, OnChanges {
     }
   }
 
-  addAddress() {
+  addAddress($event) {
+    $event.preventDefault();
     const control = <FormArray>this.myForm.controls['addresses'];
     control.push(this.initAddress(null));
   }
 
-  removeAddress(i: number) {
+  removeAddress(i: number, $event) {
+    $event.preventDefault();
     const control = <FormArray>this.myForm.controls['addresses'];
     control.removeAt(i);
   }

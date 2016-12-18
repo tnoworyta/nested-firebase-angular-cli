@@ -1,7 +1,6 @@
-<md-list>
-  <md-list-item *ngFor="let customer of customers | async">
-    <customer [customer]="customer"></customer>
-  </md-list-item>
-</md-list>
-
+<div class="my-list">
+<md-list-item *ngFor="let customer of customers | async">
+  <customer [customer]="customer"></customer>
+</md-list-item>
+</div>
 <customer-new-form></customer-new-form>

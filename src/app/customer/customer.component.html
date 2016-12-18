@@ -1,1 +1,13 @@
-<h3 md-line><a [routerLink]="['/customers', customer.$key]">{{ customer.name }}</a></h3>
+<md-card>
+  <md-card-header>
+    <img md-card-avatar src="avatar-default.png">
+    <md-card-title>{{ customer.name }}</md-card-title>
+    <md-card-subtitle>Header subtitle</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <p>Here is some more content</p>
+  </md-card-content>
+  <md-card-actions>
+    <button [routerLink]="['/customers', customer.$key]" md-button>EDIT</button>
+  </md-card-actions>
+</md-card>
