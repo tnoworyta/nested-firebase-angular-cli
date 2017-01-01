@@ -1,11 +1,15 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar [color]="red">
+  <span>{{title}}</span>
+  <span style="flex: 1 1 auto;"></span>
+  <span>
+    <nav>
+      <a routerLink="/login" routerLinkActive="active"><md-icon>home</md-icon></a>
+      <a routerLink="/items" routerLinkActive="active"><md-icon>list</md-icon></a>
+      <a routerLink="/customer-list" routerLinkActive="active"><md-icon>face</md-icon></a>
+    </nav>
+  </span>
+</md-toolbar>
 
-<nav>
-  <a routerLink="/login" routerLinkActive="active">Login</a>
-  <a routerLink="/items" routerLinkActive="active">Items</a>
-  <a routerLink="/customer-list" routerLinkActive="active">Customers</a>
-</nav>
+
 
 <router-outlet></router-outlet>
