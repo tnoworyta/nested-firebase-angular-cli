@@ -8,9 +8,11 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class ItemsComponent implements OnInit {
   items: FirebaseListObservable<any[]>;
+  gridColumnCount: number;
 
   constructor(af: AngularFire) {
     this.items = af.database.list('items');
+    this.gridColumnCount = 4;
   }
 
   ngOnInit() {

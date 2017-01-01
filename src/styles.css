@@ -484,13 +484,13 @@ md-slide-toggle.md-warn.md-slide-toggle-focused .md-ink-ripple {
   background-color: rgba(0, 0, 0, 0.26); }
 
 .md-slider-track-fill {
-  background-color: #ffd740; }
+  background-color: rgb(108, 198, 59); }
 
 .md-slider-thumb {
-  background-color: #ffd740; }
+  background-color: rgb(108, 198, 59); }
 
 .md-slider-thumb-label {
-  background-color: #ffd740; }
+  background-color: rgb(108, 198, 59); }
 
 .md-slider-thumb-label-text {
   color: rgba(0, 0, 0, 0.87); }
@@ -520,5 +520,9 @@ md-toolbar.md-warn {
 
 .md-tooltip {
   background: rgba(97, 97, 97, 0.9); }
+
+md-grid-tile {
+  border: solid white 2px;
+}
 
 /*# sourceMappingURL=deeppurple-amber.css.map */
